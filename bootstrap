@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+npm i -D babel-core babel-loader babel-preset-es2015 webpack webpack-dev-server
+npm i -S babel-polyfill
+rm -rf .git bootstrap
