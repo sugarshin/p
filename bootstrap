@@ -1,5 +1,39 @@
 #!/usr/bin/env zsh
 
-npm i -D babel-core babel-loader babel-preset-es2015 webpack webpack-dev-server
-npm i -S babel-polyfill
-rm -rf .git bootstrap
+print_header() {
+  printf "\e[34m"
+  echo '----------------------------------------------------------'
+  echo '                        ______                            '
+  echo '                       /\  == \                           '
+  echo '                       \ \  _-/                           '
+  echo '                        \ \_\                             '
+  echo '                         \/_/                             '
+  echo '                                                          '
+  echo '                    RPID PROTOTYPING                      '
+  echo '                                                          '
+  echo '----------------------------------------------------------'
+  printf "\e[0m\n"
+}
+
+install_modules() {
+  echo 'Installing modules...'
+  npm i -D babel-core babel-loader babel-preset-es2015 webpack webpack-dev-server
+  npm i -S babel-polyfill
+}
+
+rms() {
+  echo 'Ready...'
+  rm -rf .git bootstrap
+}
+
+main() {
+  print_header
+
+  install_modules
+
+  rms
+
+  echo 'Done !!!!'
+}
+
+main

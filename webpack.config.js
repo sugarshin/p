@@ -6,8 +6,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: '[name].js',
-    publicPath: '/'
+    filename: '[name].js'
   },
   module: {
     loaders: [
