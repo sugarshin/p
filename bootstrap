@@ -17,8 +17,12 @@ print_header() {
 
 install_modules() {
   echo 'Installing modules...'
-  npm i -D babel-core babel-loader babel-preset-es2015 webpack webpack-dev-server
-  npm i -S babel-polyfill
+  npm i -D autoprefixer babel-core babel-eslint babel-loader babel-preset-es2015 \
+    babel-preset-react babel-preset-stage-2 css-loader css-mqpacker eslint \
+    eslint-loader eslint-plugin-babel eslint-plugin-react jade postcss-loader \
+    style-loader stylint stylint-loader stylint-stylish stylus-loader webpack \
+    webpack-dev-server
+  npm i -S babel-polyfill react react-dom
 }
 
 rms() {

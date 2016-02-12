@@ -2,8 +2,12 @@
   "name": "p",
   "description": "rapid prototyping with webpack",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.dev.js --content-base public/",
-    "build": "NODE_ENV=production webpack"
+    "start": "jade -o build-dev -P -w src/template/index.jade | webpack-dev-server --config ./config/webpack.config.babel.js",
+    "clean:build": "if [ -d build ]; then rm -rf build; fi",
+    "mkdir:build": "mkdir -p build/assets",
+    "jade:build": "jade -o build src/template/index.jade",
+    "env:build": "npm_config_production=true",
+    "build": "npm ru env:build && npm ru clean:build && npm ru mkdir:build && webpack --config ./config/webpack.config.babel.js && MAIN_SCRIPT=/p/assets/$(basename `ls build/assets/app-*.js`) npm ru jade:build"
   },
   "author": "sugarshin",
   "license": "MIT"

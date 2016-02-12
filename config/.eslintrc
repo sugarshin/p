@@ -1,0 +1,23 @@
+{
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "plugins": ["babel", "react"],
+  "ecmaFeatures": {
+    "modules": true,
+    "jsx": true
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "commonjs": true,
+    "node": true,
+    "mocha": true
+  },
+  "globals": {
+    "google": true
+  },
+  "rules": {
+    "no-console": 1,
+    "no-unused-vars": 1
+  }
+}
