@@ -4,7 +4,7 @@ import autoprefixer from 'autoprefixer';
 import cssMqpacker from 'css-mqpacker';
 import stylintrc from './.stylintrc';
 
-const production = process.env.npm_config_production === 'true';
+const production = process.env.NODE_ENV === 'production';
 const cssModules = 'modules&importLoaders=1&localIdentName=[path][name]__[local]___[hash:base64:8]';
 const cssLoader = production ?
   `css-loader?minimize&${cssModules}` : `css-loader?${cssModules}`;
@@ -33,7 +33,7 @@ export default {
   output: {
     path: path.resolve(path.resolve(__dirname, '..', buildDir, 'assets')),
     filename: production ? 'app-[hash].js' : 'app.js',
-    publicPath: '/assets/'
+    publicPath: 'assets/'
   },
   display: { errorDetails: true },
   resolve: {
@@ -63,6 +63,13 @@ export default {
       {
         test: /\.styl$/,
         loaders: ['style', cssLoader, 'postcss-loader', 'stylus']
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loaders: [
+          'url?limit=102400&hash=sha512&digest=hex&name=[name]__[hash].[ext]',
+          'image-webpack?progressive&bypassOnDebug&optimizationLevel=7'
+        ]
       }
     ]
   },
