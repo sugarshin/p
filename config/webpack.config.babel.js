@@ -1,13 +1,9 @@
 import path from 'path';
 import webpack from 'webpack';
-import autoprefixer from 'autoprefixer';
-import cssMqpacker from 'css-mqpacker';
-import stylintrc from './.stylintrc';
 
 const production = process.env.NODE_ENV === 'production';
 const cssModules = 'modules&importLoaders=1&localIdentName=[path][name]__[local]___[hash:base64:8]';
-const cssLoader = production ?
-  `css-loader?minimize&${cssModules}` : `css-loader?${cssModules}`;
+const cssLoader = production ? `css?minimize&${cssModules}` : `css?${cssModules}`;
 const buildDev = 'build-dev';
 const buildDir = production ? 'build' : buildDev;
 const plugins = [
@@ -31,7 +27,7 @@ export default {
   cache: true,
   entry: entries,
   output: {
-    path: path.resolve(path.resolve(__dirname, '..', buildDir, 'assets')),
+    path: path.resolve(__dirname, '..', buildDir, 'assets'),
     filename: production ? 'app-[hash].js' : 'app.js',
     publicPath: 'assets/'
   },
@@ -44,7 +40,7 @@ export default {
       {
         test: /\.styl$/,
         loader: 'stylint',
-        query: stylintrc,
+        query: require('../.stylintrc'),
         exclude: /node_modules/,
       },
       {
@@ -74,10 +70,10 @@ export default {
     ]
   },
   postcss: () => [
-    autoprefixer({ browsers: ['last 2 versions'] }),
-    cssMqpacker()
+    require('autoprefixer')({ browsers: ['last 2 versions'] }),
+    require('css-mqpacker')()
   ],
-  eslint: { configFile: './config/.eslintrc' },
+  eslint: { configFile: '.eslintrc' },
   devServer: {
     contentBase: `./${buildDev}`,
     hot: true,
