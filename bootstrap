@@ -21,7 +21,7 @@ install_modules() {
     babel-preset-react babel-preset-stage-2 css-loader css-mqpacker eslint \
     eslint-loader eslint-plugin-babel eslint-plugin-react file-loader \
     image-webpack-loader jade json-server postcss-loader style-loader stylint \
-    stylint-loader stylint-stylish stylus-loader url-loader webpack \
+    stylint-loader stylint-stylish stylus stylus-loader url-loader webpack \
     webpack-dev-server
   npm i -S babel-polyfill history mirror-key-value react react-dom react-router \
     sugarshin/fetch#84b2b2328d58252df63ce31f747e51c4b7e8742b
